@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+        <section>
+        <header class="header">
+          <div class="row">
+            <div class="col-md-5">
+              <h1>Cadastro de Clientes</h1>
+            </div>
+          </div>
+        </header>
+      </section>
+      <section>
+        <form novalidate [formGroup]="clienteForm" (ngSubmit)="onSubmit()">
+          <fieldset>
+            <div class="form-group">
+              <label>Nome</label>
+              <input type="text"
+                     class="form-control"
+                     formControlName="nome">
+            </div>
+
+            <div class="form-group">
+              <label>Limite de Crédito</label>
+              <input type="text"
+                     class="form-control"
+                     formControlName="limiteCredito">
+            </div>
+          </fieldset>
+
+            <div class="form-group">
+              <label>Tipo Risco</label>
+              <select class="form-control" 
+                      required
+                      formControlName="tipoRisco" (ngModelChange)="onChange($event)">
+                <option *ngFor="let tipoRisco of tiposRiscos" [value]="tipoRisco">{{tipoRisco}}</option>
+              </select>
+            </div>
+            
+           <div class="form-group">
+              <label>Taxa de Juros</label>
+              <input type="text"
+                     class="form-control"
+                     formControlName="taxaJuros" disabled>
+          </div>
+
+          <button type="submit" class="btn btn-primary"  [disabled]="!clienteForm.valid" >Submit</button>
+          <button type="button" class="btn btn-warning" (click)="redirectClientePage()">Cancel</button>
+          <pre>{{clienteForm.value | json}}</pre>
+        </form>
+      </section>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <section>
+        <header class="header">
+          <div class="row">
+            <div class="col-md-4">
+              <h1>Clientes</h1>
+            </div>
+            <div class="col-md-6">
+
+            </div>
+            <div class="col-md-2">
+                 <button type="button" class="btn btn-primary" (click)="redirectNewClientePage()">Novo Cliente</button>                
+            </div>
+          </div>
+
+        </header>
+      </section>
+
+      <section class="main">
+
+        <table class="table">
+          <thead>
+          <tr>
+              <th>Id</th>
+              <th>Nome</th>
+              <th>Limite de Crédito</th>
+              <th>Tipo Risco</th>
+              <th>Taxa de Juros</th>
+              <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let cliente of clientes">
+            <th scope="row">{{cliente.id}}</th>
+            <td>{{cliente.nome}}</td>
+            <td>{{cliente.limiteCredito}}</td>
+            <td>{{cliente.tipoRisco}}</td>
+            <td>{{cliente.taxaJuros}}</td>
+            <td>
+                <button type="button" class="btn btn-success"       (click)="editClientePage(cliente)">Editar</button>
+                <button type="button" class="btn btn-danger"    (click)="deleteCliente(cliente)">Delete</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </div>
+</div>
